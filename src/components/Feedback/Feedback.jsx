@@ -1,25 +1,33 @@
 import { Component } from 'react';
-import styles from './feedback.scss';
-import PropTypes from 'prop-types';
+import VariantsButton from 'components/Button/VariantsButton';
+// import styles from './feedback.module.scss';
 
+const feedbackNames = ['good', 'neutral', 'bad'];
 class Feedback extends Component {
-  //   static defaultProps = {
-  //     type: 'button',
-  //   };
-
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
+
+  clientFeedback = feedbackName => {
+    this.setState(prevState => {
+      return {
+        [feedbackName]: prevState[feedbackName] + 1,
+      };
+    });
+  };
+
   render() {
     return (
       <section>
         <h2>Please leave feedback</h2>
-        <button>Good</button>
-        <button>Neutral</button>
-        <button>Bad</button>
+        <VariantsButton
+          feedbackNames={feedbackNames}
+          clientFeedback={this.clientFeedback}
+        />
       </section>
     );
   }
 }
+export default Feedback;
