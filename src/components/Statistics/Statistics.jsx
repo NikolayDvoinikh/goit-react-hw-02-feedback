@@ -7,7 +7,7 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
     { neutral: neutral },
     { bad: bad },
     { total: total },
-    { 'Positive Feedbacks': positivePercentage },
+    { 'Positive Feedbacks': `${positivePercentage}%` },
   ];
   return (
     <ul className={styles.statisticList}>
